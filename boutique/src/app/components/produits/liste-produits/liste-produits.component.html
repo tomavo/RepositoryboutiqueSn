@@ -36,13 +36,156 @@
     <td>{{produit.prix}} FCFA</td>
     <td>{{produit.quantite}}</td>
     <td>
-      <a class=" btn btn-secondary cursor-pointer mx-2"> Voir</a>
+      <a type="button" class="btn btn-primary cursor-pointer mx-2" data-toggle="modal" data-target="#voirModal"> Voir</a>
 
-      <a class="btn btn-primary cursor-pointer mx-2">Modifier</a>
+      <a type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#modifierModal">
+        Modifier
+      </a>
 
-      <a class="cursor-pointer btn btn-danger mx-2">Supprimer</a>
+      <a type="button" class="btn btn-danger  mx-2" data-toggle="modal" data-target="#suppressionModal">
+        Supprimer
+      </a>
 
     </td>
   </tr>
   </tbody>
 </table>
+
+
+<div class="modal fade" id="voirModal" tabindex="-1" aria-labelledby="voirModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="voirModalLabel">Information complète du Produit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <table class="table table-bordered">
+            <thead>
+            <tr>
+              <th scope="col">Nom</th>
+              <th scope="col">La donnée</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th scope="row">Libelle Produit</th>
+              <td>[libelleProduti]</td>
+            </tr>
+            <tr>
+              <th scope="row">Categorie Produit</th>
+              <td>[Categorie Produit]</td>
+            </tr>
+            <tr>
+              <th scope="row">Prix Produit</th>
+              <td>[Prix Produit]</td>
+            </tr>
+            <tr>
+              <th scope="row">Quantite Produit</th>
+              <td>[Quantite Produit]</td>
+            </tr>
+
+            </tbody>
+          </table>
+          <div class="row">
+            <div class="form-group col-12">
+              <label for="" class="col-form-label">Presentation du Produit:</label>
+
+            </div>
+            <div class="col-12">
+              <textarea name="" id="" cols="" rows="3" class="col-12">[Presentation Produit]</textarea>
+            </div>
+
+
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-success">Mise à jour du Produit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="suppressionModal" tabindex="-1" aria-labelledby="suppressionModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="suppressionModalLabel">Confirmation de suppression</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="line-height: 2;">
+        Confirmez-vous la suppression, de ce  produit ? <br>
+
+        <!--
+        <span style="text-decoration: underline; font-weight: bold;">Informations Produit: </span><br>
+        Libelle Produit: [libelleProduit] <br>
+        Categorie Produit : [categorieProduit] <br>
+        Quantite Restante : [quantiteRestante] <br>
+        Prix Unitaire : [Prix Unitaire] .<br>
+        -->
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler Suppression</button>
+        <button type="button" class="btn btn-success">Confirmer Suppression</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modifierModal" tabindex="-1" aria-labelledby="modifierModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modifierModalLabel">Modifier un Produit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row">
+            <div class="form-group col-6">
+              <label for="libelleProduit" class="col-form-label">Libelle Produit:</label>
+              <input type="text" class="form-control" id="libelleProduit" placeholder="[AncienLibelle]">
+            </div>
+            <div class="form-group col-6">
+              <label for="categorieProduit" class="col-form-label">Categorie du Produit:</label>
+              <input type="text" class="form-control" id="categorieProduit" placeholder="[AncienneCatProduit]">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="presentationProduit" class="col-form-label">Présentation du Produit:</label>
+            <textarea class="form-control" id="presentationProduit" placeholder="[AnciennePresentation]"></textarea>
+          </div>
+          <div class="row">
+            <div class="form-group col-6">
+              <label for="prixProduit" class="col-form-label">Prix du Produit:</label>
+              <input type="number" class="form-control" id="prixProduit" placeholder="[AncienPrix]">
+            </div>
+            <div class="form-group col-6">
+              <label for="quantiteProduit" class="col-form-label">Quantite du Produit:</label>
+              <input type="number" class="form-control" id="quantiteProduit" placeholder="[AncienneQuantite]">
+            </div>
+
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-success">Mise à jour du Produit</button>
+      </div>
+    </div>
+  </div>
+</div>
