@@ -3,8 +3,7 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  background-image: 
-  url("../../../assets/images/bgAccueil2.jpg"), url("../../../assets/images/bgAccueil1.jpg");
+  background-image: url("../../../assets/images/bgAccueil2.jpg"), url("../../../assets/images/bgAccueil1.jpg");
   height: 537px;
   min-width: 100%;
   top: 0;
