@@ -90,7 +90,7 @@ export class AddProduitComponent implements OnInit {
         this.saveProduit(produit);
         console.log(produit);
       } else {
-        produit.demande_id = this.produit.id
+        produit.produit_id = this.produit.id
         console.log(produit);
         this.editProduit(produit);
       }

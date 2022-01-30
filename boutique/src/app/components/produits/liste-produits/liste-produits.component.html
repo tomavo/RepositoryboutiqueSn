@@ -31,18 +31,18 @@
   <tr *ngFor="let produit of listeProduits; let index = index">
     <th scope="row">{{index+1}}</th>
     <td><img src="" alt="picture1" class=""></td>
-    <td>{{produit.libelle}}</td>
-    <td>{{produit.categorie.libelle}}</td>
-    <td>{{produit.prix}} FCFA</td>
-    <td>{{produit.quantite}}</td>
+    <td>{{produit?.libelle}}</td>
+    <td>{{produit?.categorie?.libelle}}</td>
+    <td>{{produit?.prix}} FCFA</td>
+    <td>{{produit?.quantite}}</td>
     <td>
       <a type="button" class="btn btn-primary cursor-pointer mx-2" data-toggle="modal" data-target="#voirModal"> Voir</a>
 
-      <a type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#modifierModal">
+      <a type="button" class="btn btn-primary mx-2" (click)="jumpToProduitEdit(produit.id)">
         Modifier
       </a>
 
-      <a type="button" class="btn btn-danger  mx-2" data-toggle="modal" data-target="#suppressionModal">
+      <a type="button" class="btn btn-danger  mx-2" data-toggle="modal" data-target="#suppressionModal" (click)="bindDataInModal(produit)">
         Supprimer
       </a>
 
@@ -137,7 +137,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler Suppression</button>
-        <button type="button" class="btn btn-success">Confirmer Suppression</button>
+        <button type="button" class="btn btn-success" (click)="deleteProduct()">Confirmer Suppression</button>
       </div>
     </div>
   </div>

@@ -31,7 +31,7 @@ public class ProduitsController {
     {
         List<Produits> produits = new ArrayList<Produits>();
 
-        produits = produitsRepository.findAll();
+        produits = produitsRepository.findAllByStatut(1);
 
         return ResponseEntity.ok(produits
         );
@@ -57,7 +57,7 @@ public class ProduitsController {
         Date actualDate = new Date();
         System.out.println(dateFormat.format(actualDate));
 
-        User user = new User(1L,"Ulrich","Fidel",null);
+        User user = new User(1L,"Ulrich","Fidel");
         CategoriesProduits categoriesProduits = new CategoriesProduits(1L,"Cahier",1, "");
 
         produits.setLibelle(produitSent.getLibelle());
@@ -79,12 +79,16 @@ public class ProduitsController {
     public ResponseEntity<?> editProduit(@RequestBody Produits produitSent)
     {
 
+
+
         Produits produits = new Produits();
+        produits = produitsRepository.findById(produits.getProduit_id()).get();
+
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date actualDate = new Date();
         System.out.println(dateFormat.format(actualDate));
 
-        User user = new User(1L,"Ulrich","Fidel",null);
+        User user = new User(1L,"Ulrich","Fidel");
         CategoriesProduits categoriesProduits = new CategoriesProduits(1L,"Cahier",1, "");
 
         produits.setLibelle(produitSent.getLibelle());
@@ -100,6 +104,31 @@ public class ProduitsController {
         produitsRepository.save(produits);
         return ResponseEntity.ok("Produit créée avec succès"
         );
+    }
+
+    @RequestMapping(value = {"produit/get-by-id/{produitId}"},method = RequestMethod.GET)
+    public ResponseEntity<?> getUserById(@PathVariable(name="produitId") Long produitId)
+    {
+
+            Produits produit = new Produits();
+            produit = produitsRepository.findById(produitId).get();
+
+            return ResponseEntity.ok(produit);
+
+    }
+
+    @RequestMapping(value = {"produit/delete/{produitId}"},method = RequestMethod.GET)
+    public ResponseEntity<?> deleteProduit(@PathVariable(name="produitId") Long produitId)
+    {
+
+        Produits produit = new Produits();
+        produit = produitsRepository.findById(produitId).get();
+
+        produit.setStatut(0);
+        produitsRepository.save(produit);
+
+        return ResponseEntity.ok(produit);
+
     }
 
 }

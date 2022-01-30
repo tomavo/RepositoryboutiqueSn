@@ -48,4 +48,6 @@ public class Produits {
     @JsonIgnore
     private int user_id;*/
 
+    private Long produit_id;
+
 }

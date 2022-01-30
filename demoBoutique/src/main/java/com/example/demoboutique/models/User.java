@@ -22,6 +22,6 @@ public class User {
 
     private String prenom;
 
-    @OneToMany(mappedBy = "user")
-    private List<Produits> produits;
+    /*@OneToMany(mappedBy = "user")
+    private List<Produits> produits;*/
 }
