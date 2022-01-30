@@ -11,29 +11,36 @@
 
   <div class="card mx-auto rounded-lg bg-white mb-3">
     <div class="card-header text-center" style="background-color: aliceblue;">
-      <div class="mx-auto">Nouveau produit</div>
+      <div class="mx-auto">{{modalTitle}}</div>
     </div>
 
     <div class="card-body">
 
-      <form action="" method="post" id="add-produit">
+      <form action="" method="post" id="add-produit" (keyup.enter)="onSubmit()" [formGroup]="form" (submit)="onSubmit()">
 
         <div class="row">
 
           <div class="col-3 form-group">
             <div class="text-left"><label for="libelle">libelle</label> <span style="color:red"> *</span>
             </div>
-            <div>
-              <input class="form-control form-control-sm" id="libelle" name="libelle" type="text">
+            <div
+            [class.has-success]="!form.get('libelle')?.errors && formSubmitted"
+                 [class.has-danger]="form.get('libelle')?.errors && formSubmitted">
+              <input class="form-control form-control-sm" id="libelle" name="libelle" formControlName="libelle"
+              [class.is-valid]="!form.get('libelle')?.errors && formSubmitted"
+                     [class.is-invalid]="form.get('libelle')?.errors && formSubmitted"
+              type="text">
             </div>
           </div>
 
           <div class="col-3 form-group">
             <div class="text-left"><label for="categorie">Catégorie du produit</label> <span style="color:red"> *</span>
             </div>
-            <div>
+            <div >
 
-              <select name="categorie" id="categorie">
+              <select name="categorie" id="categorie" formControlName="categorie">
+
+                <option value="{{categorie.id}}" *ngFor="let categorie of listeCategoriesProduits">{{categorie.libelle}}</option>
 
               </select>
 
@@ -44,8 +51,12 @@
 
             <div class="text-left"><label for="prix">Prix</label> <span style="color:red"> *</span>
             </div>
-            <div>
-              <input class="form-control form-control-sm" type="number" id="prix" name="prix">
+            <div [class.is-valid]="!form.get('prix')?.errors && formSubmitted"
+            [class.is-invalid]="form.get('prix')?.errors && formSubmitted">
+              <input class="form-control form-control-sm"
+              [class.has-success]="!form.get('prix')?.errors && formSubmitted" formControlName="prix"
+                 [class.has-danger]="form.get('prix')?.errors && formSubmitted"
+              type="number" id="prix" name="prix">
             </div>
 
           </div>
@@ -54,8 +65,13 @@
 
             <div class="text-left"><label for="quantite">Quantite</label> <span style="color:red"> *</span>
             </div>
-            <div>
-              <input class="form-control form-control-sm" type="number" id="quantite" name="quantite">
+            <div
+            [class.is-valid]="!form.get('quantite')?.errors && formSubmitted"
+                     [class.is-invalid]="form.get('quantite')?.errors && formSubmitted">
+              <input class="form-control form-control-sm" type="number" formControlName="quantite"
+              [class.has-success]="!form.get('quantite')?.errors && formSubmitted"
+                 [class.has-danger]="form.get('quantite')?.errors && formSubmitted"
+              id="quantite" name="quantite">
             </div>
 
           </div>
@@ -69,8 +85,12 @@
 
             <div class="text-left"><label for="presentation">Presentation</label> <span style="color:red"> *</span>
             </div>
-            <div>
-              <textarea class="form-control form-control-sm" name="objet" id="objet" cols="30" rows="3" id="presentation"></textarea>
+            <div [class.is-valid]="!form.get('presentation')?.errors && formSubmitted"
+            [class.is-invalid]="form.get('presentation')?.errors && formSubmitted">
+              <textarea class="form-control form-control-sm" name="objet" id="objet"
+              [class.has-success]="!form.get('presentation')?.errors && formSubmitted" formControlName="presentation"
+                 [class.has-danger]="form.get('presentation')?.errors && formSubmitted"
+              cols="30" rows="3" id="presentation"></textarea>
             </div>
 
           </div>

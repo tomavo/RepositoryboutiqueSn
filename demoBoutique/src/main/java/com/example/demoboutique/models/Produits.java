@@ -1,10 +1,9 @@
 package com.example.demoboutique.models;
 
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
+import net.bytebuddy.implementation.bind.annotation.IgnoreForBinding;
 
 import javax.persistence.*;
 
@@ -13,7 +12,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
-@NoArgsConstructor
+@NoArgsConstructor @AllArgsConstructor
 public class Produits {
 
     @Id
@@ -42,5 +41,11 @@ public class Produits {
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="user_id")
     private User user;
+
+    /*@JsonIgnore
+    private int categorie_id;
+
+    @JsonIgnore
+    private int user_id;*/
 
 }

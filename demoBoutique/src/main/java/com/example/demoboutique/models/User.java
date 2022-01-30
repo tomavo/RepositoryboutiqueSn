@@ -1,9 +1,6 @@
 package com.example.demoboutique.models;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,7 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-@NoArgsConstructor
+@NoArgsConstructor @AllArgsConstructor
 public class User {
 
     @Id
@@ -25,6 +22,6 @@ public class User {
 
     private String prenom;
 
-    /*@OneToMany(mappedBy = "user")
-    private List<Produits> produits;*/
+    @OneToMany(mappedBy = "user")
+    private List<Produits> produits;
 }

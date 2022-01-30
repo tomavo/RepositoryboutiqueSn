@@ -1,15 +1,18 @@
 package com.example.demoboutique.controllers;
 
+import com.example.demoboutique.models.CategoriesProduits;
 import com.example.demoboutique.models.Produits;
+import com.example.demoboutique.models.User;
+import com.example.demoboutique.repositories.CategorieRepository;
 import com.example.demoboutique.repositories.ProduitsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -20,6 +23,9 @@ public class ProduitsController {
     @Autowired
     private ProduitsRepository produitsRepository;
 
+    @Autowired
+    private CategorieRepository categorieRepository;
+
     @RequestMapping(value = {"produits/liste"},method = RequestMethod.GET)
     public ResponseEntity<?> getAllProduits()
     {
@@ -28,6 +34,71 @@ public class ProduitsController {
         produits = produitsRepository.findAll();
 
         return ResponseEntity.ok(produits
+        );
+    }
+
+    @RequestMapping(value = {"categories/liste"},method = RequestMethod.GET)
+    public ResponseEntity<?> getAllCategories()
+    {
+        List<CategoriesProduits> categoriesProduits = new ArrayList<CategoriesProduits>();
+
+        categoriesProduits = categorieRepository.findAll();
+
+        return ResponseEntity.ok(categoriesProduits
+        );
+    }
+
+    @RequestMapping(value = {"produit/save"},method = RequestMethod.POST)
+    public ResponseEntity<?> saveProduit(@RequestBody Produits produitSent)
+    {
+
+        Produits produits = new Produits();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date actualDate = new Date();
+        System.out.println(dateFormat.format(actualDate));
+
+        User user = new User(1L,"Ulrich","Fidel",null);
+        CategoriesProduits categoriesProduits = new CategoriesProduits(1L,"Cahier",1, "");
+
+        produits.setLibelle(produitSent.getLibelle());
+        produits.setPrix(produitSent.getPrix());
+        produits.setPresentation(produitSent.getPresentation());
+        produits.setQuantite(produitSent.getQuantite());
+        /*produits.setCategorie((produitSent.getCategorie()));
+        produits.setUser((produitSent.getUser()));*/
+        produits.setUser(user);
+        produits.setCategorie(categoriesProduits);
+        produits.setDateAjout(actualDate.toString());
+
+        produitsRepository.save(produits);
+        return ResponseEntity.ok("Produit créée avec succès"
+        );
+    }
+
+    @RequestMapping(value = {"produit/edit"},method = RequestMethod.POST)
+    public ResponseEntity<?> editProduit(@RequestBody Produits produitSent)
+    {
+
+        Produits produits = new Produits();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date actualDate = new Date();
+        System.out.println(dateFormat.format(actualDate));
+
+        User user = new User(1L,"Ulrich","Fidel",null);
+        CategoriesProduits categoriesProduits = new CategoriesProduits(1L,"Cahier",1, "");
+
+        produits.setLibelle(produitSent.getLibelle());
+        produits.setPrix(produitSent.getPrix());
+        produits.setPresentation(produitSent.getPresentation());
+        produits.setQuantite(produitSent.getQuantite());
+        /*produits.setCategorie((produitSent.getCategorie()));
+        produits.setUser((produitSent.getUser()));*/
+        produits.setUser(user);
+        produits.setCategorie(categoriesProduits);
+        produits.setDateAjout(actualDate.toString());
+
+        produitsRepository.save(produits);
+        return ResponseEntity.ok("Produit créée avec succès"
         );
     }
 

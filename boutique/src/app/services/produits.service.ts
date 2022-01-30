@@ -14,4 +14,25 @@ export class ProduitsService {
   getAllProduits(): Observable<any> {
     return this.http.get(environment.BASE_URL + 'produits/liste', {});
   }
+
+  getAllCategories(): Observable<any> {
+    return this.http.get(environment.BASE_URL + 'categories/liste', {});
+  }
+
+  saveProduit(produit: any): Observable<any> {
+    return this.http.post(environment.BASE_URL + 'produit/save', JSON.stringify(produit), this.utilsService.getHttpPostHeaderForResource());
+  }
+
+  editProduit(produit: any): Observable<any> {
+    return this.http.post(environment.BASE_URL + 'produit/edit', JSON.stringify(produit), this.utilsService.getHttpPostHeaderForResource());
+  }
+
+  deleteProduit(produitId: any) {
+    return this.http.get(environment.BASE_URL + 'produit/delete/' +produitId,  {});
+  }
+
+  getProduitById(produitId: number): Observable<any> {
+    return this.http.get(environment.BASE_URL + 'produit/get-by-id/' +produitId, {});
+  }
+  
 }
