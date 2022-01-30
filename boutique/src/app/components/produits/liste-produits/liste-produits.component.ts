@@ -16,12 +16,14 @@ export class ListeProduitsComponent implements OnInit {
   constructor(private produitsService: ProduitsService) { }
 
   ngOnInit(): void {
+    this.getAllProduits();
   }
 
-  getUserConnectedByUsername(username: string) { // load user by username
+  getAllProduits() {
     this.produitsService.getAllProduits().subscribe({
       next: value => { // success
         console.log(value);
+        this.listeProduits = value;
       },
       error: err => { // erreur
 

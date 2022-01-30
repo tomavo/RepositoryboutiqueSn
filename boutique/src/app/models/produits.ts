@@ -9,5 +9,6 @@ export class Produits {
   statut: number = 0;
   categorie: CategoriesProduits = new CategoriesProduits();
   dateAjout: string = '';
+  quantite: string = '';
 
 }

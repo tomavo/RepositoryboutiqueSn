@@ -19,17 +19,20 @@
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <th scope="row">1</th>
+  <tr *ngFor="let produit of listeProduits; let index = index">
+    <th scope="row">{{index}}</th>
     <td><img src="" alt="picture1" class=""></td>
-    <td>Bloc Note de Luxe</td>
-    <td>Categorie</td>
-    <td>900 FCFA</td>
-    <td>25</td>
+    <td>{{produit.libelle}}</td>
+    <td>{{produit.categorie.libelle}}</td>
+    <td>{{produit.prix}} FCFA</td>
+    <td>{{produit.quantite}}</td>
     <td>
-      <button>Read</button>
-      <button class="mgleft20">Edit</button>
-      <button class="mgleft20">Delete</button>
+      <a class=" btn btn-secondary cursor-pointer mx-2"> Voir</a>
+
+      <a class="btn btn-primary cursor-pointer mx-2">Modifier</a>
+
+      <a class="cursor-pointer btn btn-danger mx-2">Supprimer</a>
+
     </td>
   </tr>
   </tbody>
