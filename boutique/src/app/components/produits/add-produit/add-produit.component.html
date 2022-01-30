@@ -1,1 +1,107 @@
-<p>add-produit works!</p>
+
+<div class="col-9 mx-auto">
+
+  <div class="col-md-6 mb-2">
+    <div class="justify-content-lg-start">
+      <a routerLink="/courses" class="btn btn-sm btn-secondary add-infos text-white menu-font">
+        <i class="fas fa-backward"></i> Retour
+      </a>
+    </div>
+  </div>
+
+  <div class="card mx-auto rounded-lg bg-white mb-3">
+    <div class="card-header text-center" style="background-color: aliceblue;">
+      <div class="mx-auto">Nouveau produit</div>
+    </div>
+
+    <div class="card-body">
+      <!-- <div class="card-title">
+
+      </div> -->
+      <form action="" method="post" id="add-demande">
+
+        <div class="row">
+
+          <div class="col-6 form-group">
+            <div class="text-left"><label for="point_depart">Point de départ</label> <span style="color:red"> *</span>
+            </div>
+            <div>
+              <input class="form-control form-control-sm" id="point_depart" name="point_depart" type="text">
+            </div>
+          </div>
+
+          <div class="col-6 form-group">
+
+            <div class="text-left"><label for="point_destination">Point de destination</label> <span style="color:red"> *</span>
+            </div>
+            <div>
+              <input class="form-control form-control-sm" type="text" id="point_destination" name="point_destination">
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-6 form-group">
+            <div class="text-left"><label for="">Catégorie de véhicules</label> <span style="color:red"> *</span>
+            </div>
+            <div>
+
+              <select name="" id=""></select>
+
+            </div>
+          </div>
+
+          <div class="col-6 form-group">
+            <div class="text-left"><label for="categorie">Motif</label>  <span style="color:red"> *</span>
+            </div>
+            <div>
+
+              <select id="categorie"></select>
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-6 form-group">
+
+            <div class="text-left"><label for="nbr_personne">Nombre de personnes</label> <span style="color:red"> *</span>
+            </div>
+            <div>
+              <input class="form-control form-control-sm" type="number" id="nbr_personne" name="nbr_personne">
+            </div>
+
+          </div>
+
+          <div class="col-6 form-group">
+
+            <div class="text-left"><label for="escales">Escales</label></div>
+            <div>
+              <input class="form-control form-control-sm" type="text" id="escales" name="escales">
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <div class="text-left"><label for="objet">Objet</label></div>
+          <div>
+            <textarea class="form-control form-control-sm" name="objet" id="objet" cols="30" rows="3"></textarea>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="card-footer">
+      <div class="mx-auto">
+        <button class="btn btn-secondary" form="add-demande" type="reset">Annuler</button>
+        <button class="btn btn-success ml-3" form="add-demande" type="submit">Valider</button>
+      </div>
+    </div>
+  </div>
+</div>
