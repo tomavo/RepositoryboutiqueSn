@@ -2,6 +2,7 @@ package com.example.demoboutique.models;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import net.bytebuddy.implementation.bind.annotation.IgnoreForBinding;
 
@@ -36,17 +37,13 @@ public class Produits {
 
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="categorie_id")
+    @JsonIgnoreProperties(value = {"produits"})
     private CategoriesProduits categorie;
 
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="user_id")
+    @JsonIgnoreProperties(value = {"produits"})
     private User user;
-
-    /*@JsonIgnore
-    private int categorie_id;
-
-    @JsonIgnore
-    private int user_id;*/
 
     private Long produit_id;
 

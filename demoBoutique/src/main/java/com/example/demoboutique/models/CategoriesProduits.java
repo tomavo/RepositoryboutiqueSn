@@ -21,8 +21,8 @@ public class CategoriesProduits {
 
     private String libelle;
 
-    /*@OneToMany(mappedBy = "categorie")
-    private List<Produits> produits;*/
+    @OneToMany(mappedBy = "categorie")
+    private List<Produits> produits;
 
     private int statut = 1;
 

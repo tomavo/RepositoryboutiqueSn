@@ -53,9 +53,11 @@ public class ProduitsController {
     {
 
         Produits produits = new Produits();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy à HH:mm");
         Date actualDate = new Date();
         System.out.println(dateFormat.format(actualDate));
+
+        String actualDateString = dateFormat.format(actualDate);
 
         /*User user = new User(1L,"Ulrich","Fidel");
         CategoriesProduits categoriesProduits = new CategoriesProduits(1L,"Cahier",1, "");*/
@@ -66,9 +68,7 @@ public class ProduitsController {
         produits.setQuantite(produitSent.getQuantite());
         produits.setCategorie((produitSent.getCategorie()));
         produits.setUser((produitSent.getUser()));
-        /*produits.setUser(user);
-        produits.setCategorie(categoriesProduits);*/
-        produits.setDateAjout(actualDate.toString());
+        produits.setDateAjout(actualDateString);
 
         produitsRepository.save(produits);
         return ResponseEntity.ok("Produit créée avec succès"
@@ -82,12 +82,11 @@ public class ProduitsController {
         Produits produits = new Produits();
         produits = produitsRepository.findById(produitSent.getProduit_id()).get();
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         Date actualDate = new Date();
         System.out.println(dateFormat.format(actualDate));
 
-        /*User user = new User(1L,"Ulrich","Fidel");
-        CategoriesProduits categoriesProduits = new CategoriesProduits(1L,"Cahier",1, "");*/
+        String actualDateString = dateFormat.format(actualDate);
 
         produits.setLibelle(produitSent.getLibelle());
         produits.setPrix(produitSent.getPrix());
@@ -95,9 +94,6 @@ public class ProduitsController {
         produits.setQuantite(produitSent.getQuantite());
         produits.setCategorie((produitSent.getCategorie()));
         produits.setUser((produitSent.getUser()));
-        /*produits.setUser(user);
-        produits.setCategorie(categoriesProduits);*/
-        produits.setDateAjout(actualDate.toString());
 
         produitsRepository.save(produits);
         return ResponseEntity.ok("Produit créée avec succès"
