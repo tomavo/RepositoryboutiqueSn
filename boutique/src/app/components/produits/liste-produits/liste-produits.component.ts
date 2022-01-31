@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import {ProduitsService} from "../../../services/produits.service";
 import {Produits} from "../../../models/produits";
 import { Router } from '@angular/router';
+declare var $: any;
 
 @Component({
   selector: 'app-liste-produits',
@@ -42,13 +43,15 @@ export class ListeProduitsComponent implements OnInit {
 
   bindDataInModal(produit: Produits) {
     this.produitSelected = produit;
+    console.log(this.produitSelected);
   }
 
   deleteProduct() {
     console.log(this.produitSelected);
     this.produitsService.deleteProduit(this.produitSelected.id).subscribe({
       next: value => { // success
-        
+        $('#suppressionModal').modal('toggle');
+        this.getAllProduits();
       },
       error: err => { // erreur
 

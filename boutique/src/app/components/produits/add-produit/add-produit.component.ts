@@ -7,6 +7,7 @@ import { User } from 'src/app/models/user';
 import { ProduitsService } from 'src/app/services/produits.service';
 import { UtilsService } from 'src/app/services/utils.service';
 import { environment } from 'src/environments/environment';
+declare var $: any;
 
 @Component({
   selector: 'app-add-produit',
@@ -75,13 +76,17 @@ export class AddProduitComponent implements OnInit {
 
   onSubmit(){
     this.formSubmitted = true;
+    let categorie: CategoriesProduits = new CategoriesProduits();
+    categorie.id = this.form.get('categorie')?.value;
+    let userSending: User = new User();
+    userSending.id = 1;
     let produit: any = {
       libelle: this.form.get('libelle')?.value,
       presentation: this.form.get('presentation')?.value,
       prix: this.form.get('prix')?.value,
       quantite: this.form.get('quantite')?.value,
-      categorie: this.form.get('categorie')?.value,
-      user_id: 1
+      categorie: categorie,
+      user: userSending
     }
 
   
@@ -90,7 +95,7 @@ export class AddProduitComponent implements OnInit {
         this.saveProduit(produit);
         console.log(produit);
       } else {
-        produit.produit_id = this.produit.id
+        produit.produit_id = this.produitId
         console.log(produit);
         this.editProduit(produit);
       }
@@ -102,10 +107,10 @@ export class AddProduitComponent implements OnInit {
   editProduit(produit: any): void {
     this.produitsService.editProduit(produit).subscribe({
       next: value => { // success
-        this.router.navigate(['/produits/liste']);
+        
       },
       error: err => { // erreur
-        
+        this.router.navigate(['/produits/liste']);
       },
       complete: () => { // fin de la requete
         
@@ -116,10 +121,10 @@ export class AddProduitComponent implements OnInit {
   saveProduit(produit: any): void {
     this.produitsService.saveProduit(produit).subscribe({
       next: value => { // success
-        this.router.navigate(['/produits/liste']);
+        
       },
       error: err => { // erreur
-        
+        this.router.navigate(['/produits/liste']);
       },
       complete: () => { // fin de la requete
         

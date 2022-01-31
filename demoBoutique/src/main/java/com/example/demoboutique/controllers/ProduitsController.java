@@ -57,17 +57,17 @@ public class ProduitsController {
         Date actualDate = new Date();
         System.out.println(dateFormat.format(actualDate));
 
-        User user = new User(1L,"Ulrich","Fidel");
-        CategoriesProduits categoriesProduits = new CategoriesProduits(1L,"Cahier",1, "");
+        /*User user = new User(1L,"Ulrich","Fidel");
+        CategoriesProduits categoriesProduits = new CategoriesProduits(1L,"Cahier",1, "");*/
 
         produits.setLibelle(produitSent.getLibelle());
         produits.setPrix(produitSent.getPrix());
         produits.setPresentation(produitSent.getPresentation());
         produits.setQuantite(produitSent.getQuantite());
-        /*produits.setCategorie((produitSent.getCategorie()));
-        produits.setUser((produitSent.getUser()));*/
-        produits.setUser(user);
-        produits.setCategorie(categoriesProduits);
+        produits.setCategorie((produitSent.getCategorie()));
+        produits.setUser((produitSent.getUser()));
+        /*produits.setUser(user);
+        produits.setCategorie(categoriesProduits);*/
         produits.setDateAjout(actualDate.toString());
 
         produitsRepository.save(produits);
@@ -79,26 +79,24 @@ public class ProduitsController {
     public ResponseEntity<?> editProduit(@RequestBody Produits produitSent)
     {
 
-
-
         Produits produits = new Produits();
-        produits = produitsRepository.findById(produits.getProduit_id()).get();
+        produits = produitsRepository.findById(produitSent.getProduit_id()).get();
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date actualDate = new Date();
         System.out.println(dateFormat.format(actualDate));
 
-        User user = new User(1L,"Ulrich","Fidel");
-        CategoriesProduits categoriesProduits = new CategoriesProduits(1L,"Cahier",1, "");
+        /*User user = new User(1L,"Ulrich","Fidel");
+        CategoriesProduits categoriesProduits = new CategoriesProduits(1L,"Cahier",1, "");*/
 
         produits.setLibelle(produitSent.getLibelle());
         produits.setPrix(produitSent.getPrix());
         produits.setPresentation(produitSent.getPresentation());
         produits.setQuantite(produitSent.getQuantite());
-        /*produits.setCategorie((produitSent.getCategorie()));
-        produits.setUser((produitSent.getUser()));*/
-        produits.setUser(user);
-        produits.setCategorie(categoriesProduits);
+        produits.setCategorie((produitSent.getCategorie()));
+        produits.setUser((produitSent.getUser()));
+        /*produits.setUser(user);
+        produits.setCategorie(categoriesProduits);*/
         produits.setDateAjout(actualDate.toString());
 
         produitsRepository.save(produits);

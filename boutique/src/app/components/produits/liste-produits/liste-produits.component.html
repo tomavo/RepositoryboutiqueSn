@@ -36,7 +36,7 @@
     <td>{{produit?.prix}} FCFA</td>
     <td>{{produit?.quantite}}</td>
     <td>
-      <a type="button" class="btn btn-primary cursor-pointer mx-2" data-toggle="modal" data-target="#voirModal"> Voir</a>
+      <a type="button" class="btn btn-primary cursor-pointer mx-2" data-toggle="modal" data-target="#voirModal"  (click)="bindDataInModal(produit)"> Voir</a>
 
       <a type="button" class="btn btn-primary mx-2" (click)="jumpToProduitEdit(produit.id)">
         Modifier
@@ -73,19 +73,19 @@
             <tbody>
             <tr>
               <th scope="row">Libelle Produit</th>
-              <td>[libelleProduti]</td>
+              <td>{{this.produitSelected.libelle}}</td>
             </tr>
             <tr>
               <th scope="row">Categorie Produit</th>
-              <td>[Categorie Produit]</td>
+              <td>{{this.produitSelected?.categorie?.libelle}}</td>
             </tr>
             <tr>
               <th scope="row">Prix Produit</th>
-              <td>[Prix Produit]</td>
+              <td>{{this.produitSelected?.prix}} FCFA</td>
             </tr>
             <tr>
               <th scope="row">Quantite Produit</th>
-              <td>[Quantite Produit]</td>
+              <td>{{this.produitSelected?.quantite}}</td>
             </tr>
 
             </tbody>
@@ -96,7 +96,7 @@
 
             </div>
             <div class="col-12">
-              <textarea name="" id="" cols="" rows="3" class="col-12">[Presentation Produit]</textarea>
+              <textarea name="" id="" cols="" rows="3" class="col-12">{{this.produitSelected?.presentation}}</textarea>
             </div>
 
 
@@ -106,7 +106,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
-        <button type="button" class="btn btn-success">Mise à jour du Produit</button>
+        <a type="button" class="btn btn-success" (click)="jumpToProduitEdit(this.produitSelected?.id)">Mise à jour du Produit</a>
       </div>
     </div>
   </div>
