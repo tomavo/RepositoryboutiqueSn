@@ -3,6 +3,9 @@ import { environment } from 'src/environments/environment';
 import {ProduitsService} from "../../../services/produits.service";
 import {Produits} from "../../../models/produits";
 import { Router } from '@angular/router';
+import {FormGroup} from "@angular/forms";
+import {CategoriesProduits} from "../../../models/categories-produits";
+import {User} from "../../../models/user";
 declare var $: any;
 
 @Component({
@@ -14,12 +17,16 @@ export class ListeProduitsComponent implements OnInit {
 
   listeProduits: Array<Produits> = [];
   produitSelected: Produits = new Produits();
+  form: FormGroup | undefined;
+  formSubmitted = false;
+  environment = environment;
 
   constructor(private produitsService: ProduitsService, private router: Router) { }
 
   ngOnInit(): void {
     this.getAllProduits();
   }
+
 
   getAllProduits() {
     this.produitsService.getAllProduits().subscribe({

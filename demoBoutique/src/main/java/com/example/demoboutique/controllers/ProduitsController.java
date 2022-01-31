@@ -33,8 +33,7 @@ public class ProduitsController {
 
         produits = produitsRepository.findAllByStatut(1);
 
-        return ResponseEntity.ok(produits
-        );
+        return ResponseEntity.ok(produits);
     }
 
     @RequestMapping(value = {"categories/liste"},method = RequestMethod.GET)
@@ -124,5 +123,14 @@ public class ProduitsController {
         return ResponseEntity.ok(produit);
 
     }
+
+    @RequestMapping(value = {"produit/search"},method = RequestMethod.GET)
+    public ResponseEntity<?> getProduitParMC(@RequestBody Produits produitSent){
+        List<Produits> produits = new ArrayList<Produits>();
+        produits = produitsRepository.findAllByPrixAndStatut(produitSent.getPrix(),1);
+
+        return ResponseEntity.ok(produits);
+    }
+
 
 }

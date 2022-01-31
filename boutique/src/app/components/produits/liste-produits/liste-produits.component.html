@@ -1,15 +1,24 @@
-<form>
+
+
+<form action="" method="get" id="search-produit">
   <div class="col-md-12">
-    <div class="form-group form-inline float-left">Faire une Recherche: <input class="form-control ml-2" type="text" /></div>
+    <div class="form-group form-inline float-left " >
+      Faire une Recherche:
+
+        <input class="form-control form-control-sm" name="motCle" value="${mc}">
+
+      <button class="form-group form-inline btn btn-dark ml-3" form="search-produit" type="submit">Rechercher</button>
+    </div>
 
 
-    <div class="">
+
+
       <div class="justify-content-lg-end float-right">
         <a routerLink="/produits/ajout" class="btn btn-sm btn-success add-infos text-white menu-font">
           <i class="fas fa-backward"></i> Ajouter Produit
         </a>
       </div>
-    </div>
+
 
   </div>
 
@@ -36,9 +45,9 @@
     <td>{{produit?.prix}} FCFA</td>
     <td>{{produit?.quantite}}</td>
     <td>
-      <a type="button" class="btn btn-primary cursor-pointer mx-2" data-toggle="modal" data-target="#voirModal"  (click)="bindDataInModal(produit)"> Voir</a>
+      <a type="button" class="btn btn-success cursor-pointer mx-2" data-toggle="modal" data-target="#voirModal"  (click)="bindDataInModal(produit)"> Voir</a>
 
-      <a type="button" class="btn btn-primary mx-2" (click)="jumpToProduitEdit(produit.id)">
+      <a type="button" class="btn btn-warning mx-2" (click)="jumpToProduitEdit(produit.id)">
         Modifier
       </a>
 
@@ -104,9 +113,9 @@
 
         </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
-        <a type="button" class="btn btn-success" (click)="jumpToProduitEdit(this.produitSelected?.id)">Mise à jour du Produit</a>
+      <div class="modal-footer justify-content-center">
+
+        <div style="font-weight: bold; ">@ copyright Tous Pour l'Ecole.</div>
       </div>
     </div>
   </div>

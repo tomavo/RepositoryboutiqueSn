@@ -10,8 +10,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "PRODUITS")
-@Getter
-@Setter
+@Getter //il genere en meme temps les getter de tout les attributs de la class , grâce à lomnok
+@Setter //il genere en meme temps les setter de tout les attributs de la class , grâce à lombok
 @ToString
 @NoArgsConstructor @AllArgsConstructor
 public class Produits {

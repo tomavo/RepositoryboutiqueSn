@@ -34,5 +34,5 @@ export class ProduitsService {
   getProduitById(produitId: number): Observable<any> {
     return this.http.get(environment.BASE_URL + 'produit/get-by-id/' +produitId, {});
   }
-  
+
 }

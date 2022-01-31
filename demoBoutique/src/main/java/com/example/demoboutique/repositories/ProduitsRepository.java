@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface ProduitsRepository extends JpaRepository<Produits, Long> {
     List<Produits> findAllByStatut(int statut);
+
+    List<Produits> findAllByPrixAndStatut(int prix,int statut);
 }
